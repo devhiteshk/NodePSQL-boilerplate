@@ -1,8 +1,8 @@
-// prisma.js
 import { PrismaClient } from '@prisma/client';
+import { DATABASE_URL } from '../utils/config';
 
 const prisma = new PrismaClient({
-  datasourceUrl: process.env.DATABASE_URL,
+  datasourceUrl: DATABASE_URL,
 });
 
 export default prisma;
