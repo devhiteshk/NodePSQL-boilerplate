@@ -1,8 +1,8 @@
-import { Kafka } from "kafkajs"
+import { Kafka } from 'kafkajs';
 
 const kafka = new Kafka({
   clientId: 'my-node-app',
-  brokers: ['localhost:9092']
+  brokers: ['localhost:9092'],
 });
 
 const producer = kafka.producer();
@@ -13,9 +13,7 @@ const runProducer = async () => {
 
   await producer.send({
     topic: 'test-topic',
-    messages: [
-      { value: 'Hello KafkaJS!' },
-    ],
+    messages: [{ value: 'Hello KafkaJS!' }],
   });
 
   console.log('Message sent successfully');

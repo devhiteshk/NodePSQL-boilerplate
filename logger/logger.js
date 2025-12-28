@@ -4,30 +4,30 @@ const formatTimestamp = () => {
 };
 
 const log = async (prefix, color, ...params) => {
-  const chalk = (await import("chalk")).default;
+  const chalk = (await import('chalk')).default;
   console.log(chalk[color](`${formatTimestamp()} ${prefix}`), ...params);
 };
 
 const info = (...params) => {
-  log("✅ INFO:", "green", ...params);
+  log('✅ INFO:', 'green', ...params);
 };
 
 const error = (...params) => {
-  log("🔴 ERROR:", "red", ...params);
+  log('🔴 ERROR:', 'red', ...params);
 };
 
 const warn = (...params) => {
-  log("🟡 WARN:", "yellow", ...params);
+  log('🟡 WARN:', 'yellow', ...params);
 };
 
 const debug = (...params) => {
-  if (process.env.DEBUG === "true") {
-    log("🐛 DEBUG:", "blue", ...params);
+  if (process.env.DEBUG === 'true') {
+    log('🐛 DEBUG:', 'blue', ...params);
   }
 };
 
 const success = (...params) => {
-  log("🎉 SUCCESS:", "magenta", ...params);
+  log('🎉 SUCCESS:', 'magenta', ...params);
 };
 
 const custom = (prefix, color, ...params) => {

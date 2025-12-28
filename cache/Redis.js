@@ -1,10 +1,10 @@
 import { createClient } from 'redis';
-import * as logger from "../logger/logger.js"
+import * as logger from '../logger/logger.js';
 
 const redisClient = createClient({
   host: process.env.REDIS_HOST,
   port: process.env.REDIS_PORT,
-  password: process.env.REDIS_PASSWORD
+  password: process.env.REDIS_PASSWORD,
 });
 
 // Handle Redis client errors
@@ -16,9 +16,9 @@ redisClient.on('error', (err) => {
 const connectRedis = async () => {
   try {
     await redisClient.connect();
-    logger.info("Connected to Redis successfully");
+    logger.info('Connected to Redis successfully');
   } catch (err) {
-    logger.error("Failed to connect to Redis", err);
+    logger.error('Failed to connect to Redis', err);
   }
 };
 

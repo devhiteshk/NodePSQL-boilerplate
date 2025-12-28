@@ -6,13 +6,31 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Info: no test specified\" && exit 1",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:studio": "prisma studio",
+    "db:migrate": "npm run prisma:migrate",
+    "generate:crud": "node scripts/generate-crud.js --mode=services",
+    "pre-commit": "npm run format || true && npm run lint:fix || true && npm test || true",
+    "lint": "eslint . --ext .js,.mjs,.cjs --max-warnings 0 || true",
+    "lint:fix": "eslint . --ext .js,.mjs,.cjs --fix || true",
+    "format": "prettier --write \"**/*.{js,json,md,css,scss,html}\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,tsx,json,md,css,scss,html}": [
+      "prettier --write",
+      "eslint --fix --ext .js,.mjs,.cjs,.ts || true",
+      "git add"
+    ]
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@prisma/client": "^7.2.0",
     "body-parser": "^1.20.3",
     "chalk": "^5.4.1",
     "cors": "^2.8.5",
@@ -23,5 +41,14 @@
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.14.1",
     "redis": "^4.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
+    "prisma": "^7.2.0"
   }
 }

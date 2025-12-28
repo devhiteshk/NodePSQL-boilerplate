@@ -1,8 +1,8 @@
-import { Kafka } from "kafkajs"
+import { Kafka } from 'kafkajs';
 
 const kafka = new Kafka({
   clientId: 'my-node-app',
-  brokers: ['localhost:9092']
+  brokers: ['localhost:9092'],
 });
 
 const consumer = kafka.consumer({ groupId: 'test-group' });
