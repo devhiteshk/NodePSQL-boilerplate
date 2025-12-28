@@ -2,9 +2,9 @@ import { createClient } from 'redis';
 import * as logger from "../logger/logger.js"
 
 const redisClient = createClient({
-  host: process.env.REDIS_HOST || 'localhost', // Replace with actual Redis host if using a service
-  port: process.env.REDIS_PORT || 6379, // Default Redis port
-  password: process.env.password || ""
+  host: process.env.REDIS_HOST,
+  port: process.env.REDIS_PORT,
+  password: process.env.REDIS_PASSWORD
 });
 
 // Handle Redis client errors
